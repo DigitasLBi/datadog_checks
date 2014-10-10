@@ -1,0 +1,23 @@
+init_config:
+
+        notify:
+<% @notify.each do |n| %>
+           - <%= n%>
+<% end %>
+
+instances:
+<% @instances.each do |i| %>
+- name: <%=node.chef_environment%>-<%= i["name"] %>
+  url: <%= i["url"] %>
+  <% if !i['username'].nil? %>
+  username: <%= i['username'] %>
+  <%end%>
+  <% if !i['password'].nil? %>
+  password: <%= i['password'] %>
+  <%end%>
+  collect_response_time: true
+  disable_ssl_validation: false
+  timeout: 1
+  window: 5
+  threshold: 3
+<% end %>

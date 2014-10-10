@@ -1,0 +1,12 @@
+init_config:
+
+        notify:
+<% @notify.each do |n| %>
+           - <%= n%>
+<% end %>
+
+instances:
+<% @instances.each do |process| %>
+- name: <%=node.chef_environment%>-<%= process %>
+  search_string: ["<%=  process %>"]
+<% end %>
