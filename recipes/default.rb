@@ -14,7 +14,6 @@ template "/etc/dd-agent/conf.d/http_check.yaml" do
 	source "http_check.yaml.erb"
 	action :create
 	variables({
-     :notify => node[:datadog_notify],
      :instances => node[:datadog_http_checks]
   	})
   	notifies :restart, "service[datadog-agent]", :delayed
@@ -25,7 +24,6 @@ template "/etc/dd-agent/conf.d/process.yaml" do
 	source "process.yaml.erb"
 	action :create
 	variables({
-     :notify => node[:datadog_notify],
      :instances => node[:datadog_process_checks]
   	})
   	notifies :restart, "service[datadog-agent]", :delayed

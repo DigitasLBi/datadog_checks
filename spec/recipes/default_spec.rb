@@ -8,8 +8,7 @@ describe 'datadog_checks::default' do
   it 'creates template for http checks' do
     expect(datadog_checks_run).to create_template('/etc/dd-agent/conf.d/http_check.yaml')
     .with_variables(
-      {:notify=>["hipchat-Helios_Monitoring"], 
-        :instances=>[{"name"=>"app_name", "url"=>"app_url"}, 
+      {:instances=>[{"name"=>"app_name", "url"=>"app_url"}, 
           {"name"=>"app_name_with_password", "url"=>"app_url", "username"=>"username", "password"=>"password"}]}
 )
   end
@@ -17,8 +16,7 @@ describe 'datadog_checks::default' do
   it 'creates template for process checks' do
     expect(datadog_checks_run).to create_template('/etc/dd-agent/conf.d/process.yaml')
     .with_variables(
-      {:notify=>["hipchat-Helios_Monitoring"], 
-        :instances=>["process"]
+      { :instances=>["process"]
       })
   end
 

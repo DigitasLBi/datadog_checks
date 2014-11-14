@@ -1,10 +1,5 @@
 init_config:
 
-        notify:
-<% @notify.each do |n| %>
-           - <%= n%>
-<% end %>
-
 instances:
 <% @instances.each do |i| %>
 - name: <%=node.chef_environment%>-<%= i["name"] %>
@@ -17,7 +12,7 @@ instances:
   <%end%>
   collect_response_time: true
   disable_ssl_validation: false
-  timeout: 1
+  timeout: 5
   window: 5
   threshold: 3
 <% end %>

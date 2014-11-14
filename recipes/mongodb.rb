@@ -8,9 +8,7 @@ node.default['datadog_http_checks'] = []
 template "/etc/dd-agent/conf.d/mongo.yaml" do 
 	source "mongo.yaml.erb"
 	action :create
-	variables({
-     :notify => node[:datadog_notify]
-    })
+	variables({})
   	notifies :restart, "service[datadog-agent]", :delayed
 end
 

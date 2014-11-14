@@ -8,7 +8,6 @@ describe 'datadog_checks::mongodb' do
   it 'creates template for mongodb' do
     expect(datadog_checks_run).to create_template('/etc/dd-agent/conf.d/mongo.yaml')
     .with_variables(
-      {:notify=>["hipchat-Helios_Monitoring"]
-  })
+      {})
   end
 end
